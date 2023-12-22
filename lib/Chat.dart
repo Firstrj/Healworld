@@ -12,36 +12,33 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(11, 28, 23, 1),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              width: 450.0,
-              height: 825.0,
+      backgroundColor: Color.fromRGBO(11, 28, 23, 1),
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("Image/Background.png"),
+                  image: AssetImage("Image/Background (5).png"),
                   fit: BoxFit.fill,
-                  alignment: Alignment.topCenter,
+                  alignment: Alignment.bottomCenter,
                 ),
               ),
               child: Stack(
                 children: [
-                  Container(
-                    width: 420.0,
-                    height: 200,
-                    decoration: const BoxDecoration(
+                  Positioned(
+                    top: 5,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      height: 180,
                       color: const Color.fromARGB(255, 4, 31, 40),
                     ),
-                    // height: 180,
-                    // color: const Color.fromARGB(255, 4, 31, 40),
                   ),
                   Column(
                     children: [
                       Padding(
-                        padding:
-                            const EdgeInsets.only(top: 40, left: 5, right: 5),
+                        padding: EdgeInsets.only(top: 40, left: 5, right: 5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -78,14 +75,14 @@ class _ChatState extends State<Chat> {
                       ),
                       const SizedBox(height: 22),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: Container(
                           height: 50.61,
                           width: 337,
                           decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 255, 255, 255),
+                            color: Color.fromARGB(255, 255, 255, 255),
                             border: Border.all(
-                              color: const Color.fromARGB(255, 255, 255, 255),
+                              color: Color.fromARGB(255, 255, 255, 255),
                             ),
                             borderRadius: BorderRadius.circular(30),
                           ),
@@ -108,101 +105,99 @@ class _ChatState extends State<Chat> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 40),
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: feeddata.length,
-                          itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                ChatDetailPage(),
-                                          ),
-                                        );
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            width: 40,
-                                            height: 40,
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                image: AssetImage(
-                                                    feeddata[index]
-                                                            ['filename'] ??
-                                                        ''),
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                          const SizedBox(width: 10),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                feeddata[index]['name'],
-                                                style: const TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                              const SizedBox(height: 1),
-                                              Text(
-                                                feeddata[index]['message'],
-                                                style: const TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                            ],
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 240),
-                                            child: Column(
-                                              children: [
-                                                const SizedBox(height: 7),
-                                                CircleAvatar(
-                                                  radius: 7,
-                                                  backgroundColor: Colors.red,
-                                                  child: Text(
-                                                    feeddata[index]['msgCount']
-                                                        .toString(),
-                                                    style: const TextStyle(
-                                                        fontSize: 10,
-                                                        color: Colors.white),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                    ],
+                  ),
+                  Positioned(
+                    top: 170,
+                    left: 5,
+                    right: 0,
+                    bottom: 20,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                      child: ListView(
+                        padding: EdgeInsets.only(left: 15),
+                        children: List.generate(
+                          feeddata.length,
+                          (index) => InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ChatDetailPage(),
                                 ),
-                                const Divider(
-                                  indent: 10,
-                                  color: Color.fromRGBO(255, 255, 255, 0),
-                                )
-                              ],
-                            );
-                          },
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 40,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          feeddata[index]['filename'] ?? '',
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          feeddata[index]['name'],
+                                          style: const TextStyle(
+                                              color: Colors.white),
+                                        ),
+                                        const SizedBox(height: 1),
+                                        Text(
+                                          feeddata[index]['message'],
+                                          style: const TextStyle(
+                                              color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(width: 10), // Add some spacing
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: Column(
+                                      children: [
+                                        const SizedBox(height: 7),
+                                        CircleAvatar(
+                                          radius: 7,
+                                          backgroundColor: Colors.red,
+                                          child: Text(
+                                            feeddata[index]['msgCount']
+                                                .toString(),
+                                            style: const TextStyle(
+                                              fontSize: 10,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ],
+                    ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -217,9 +212,10 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Chat Detail"),
-        ),
-        body: Container());
+      appBar: AppBar(
+        title: Text("Chat Detail"),
+      ),
+      body: Container(),
+    );
   }
 }

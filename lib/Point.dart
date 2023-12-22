@@ -20,7 +20,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Scaffold(
-        key: scaffoldKey,
         backgroundColor: const Color.fromRGBO(11, 28, 23, 1),
         body: SafeArea(
           top: true,

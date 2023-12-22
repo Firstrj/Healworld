@@ -96,12 +96,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                   Expanded(
                                     flex: 2,
-                                    child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: Image.asset(
-                                        'Image/Mask group.png',
-                                        height: 40,
-                                        width: 40,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                      },
+                                      child: Align(
+                                        alignment: Alignment.centerRight,
+                                        child: Image.asset(
+                                          'Image/Mask group.png',
+                                          height: 40,
+                                          width: 40,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -165,7 +169,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
-                                                              .fromSTEB(50, 79,50, 0),
+                                                              .fromSTEB(50, 79,
+                                                                  50, 0),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -178,8 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                 BorderRadius
                                                                     .circular(
                                                                         8),
-                                                            child:
-                                                                Image.asset(
+                                                            child: Image.asset(
                                                               'Image/earth.png',
                                                               width: 101,
                                                               height: 141.75,
@@ -191,8 +195,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                 BorderRadius
                                                                     .circular(
                                                                         8),
-                                                            child:
-                                                                Image.asset(
+                                                            child: Image.asset(
                                                               'Image/closed lock.png',
                                                               width: 101,
                                                               height: 141.75,
